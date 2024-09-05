@@ -6,16 +6,16 @@
 body{
     margin: 0;
     padding: 0;
-
+    overflow: hidden;
 }
 
 .options-cont {
     height: 3rem;
     width: 3rem;
-    background-color:#e0eff4;
+    background-color: #c9e5dd;
     position: absolute;
-    top:2rem;
-    left: 2rem;
+    top:2.7rem;
+    left: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,16 +28,15 @@ img{
     
 }
 .tools-cont {
-    display: flex;
+    display: flex; /*This makes the .tools-cont container a flex container. The direct child elements of .tools-cont will be arranged in a single line (horizontally, by default) unless otherwise specified.*/
     height: 4rem;
     width: 70vw;
-    background-color: #e0eff4;
+    background-color: #c9e5dd;
     justify-content: space-around;
     position: absolute;
-    top: 2rem;
-    left: 20vw;
+    top: 3rem;
+    left: 16vw;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
 }   
 
 .scale-tools{
@@ -54,15 +53,15 @@ img{
 }
 
 .tools-cont > * {
-    display: block;
-    width: 4.5rem;
+    display: block; /*you can assign display: flex; to the children of the .tools-cont container as well. Doing so will make each of those child elements a flex container themselves. This won't change their horizontal alignment within the .tools-cont container, but it will allow you to control the layout of their own children.*/
+    width: 4rem;
 }
 
 .pencil-tool-cont {
     height: 4rem;
     width: 6rem;
     position: absolute;
-    background-color:   #e0eff4;
+    background-color: #c9e5dd;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     top:6.2rem;
     left:20vw;
@@ -82,7 +81,7 @@ img{
     width: 80%;
 }
 .pencil-color-cont {
-    background-color:   #e0eff4;
+    background-color: #c9e5dd;
     height: calc(100% - 3rem);
     display: flex;
     justify-content: center;
@@ -113,7 +112,7 @@ img{
 .eraser-tool-cont {
     height: 2rem;
     width: 6.5rem;
-    background-color:   #e0eff4;
+    background-color:  #c9e5dd;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: none;
     justify-content: center;
@@ -121,8 +120,6 @@ img{
     position: absolute;
     top: 6.2rem;
     left: 30vw;
-
-
 }
 
 .eraser-tool-cont input {
@@ -139,13 +136,12 @@ img{
 }
 
 .header-cont{
-    height: 2rem;
-
+    height: 2rem; 
     display: flex;
     justify-content: flex-end;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color:  #e0eff4;
+    background-color: #c9e5dd;
 }
 .header-cont > * {
     height: 1.3rem;
@@ -170,9 +166,819 @@ textarea{
     width: 100%;
     outline: none;
     border: none;
-    resize: none;
+    resize: none; /*to remove the small icon at the bottom right corner of text area*/
 }
 img{
     height: 100%;
     width: 100%;
+}
+
+@media (max-width: 320px) {
+    .options-cont {
+        height: 2rem;
+        width: 2rem;
+        background-color: #c9e5dd;
+        position: absolute;
+        top: 1.5rem;
+        left: 9rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .fa-bars {
+        font-size: 1rem;
+    }
+
+    .fa-times {
+        font-size: 1rem;
+    }
+    .tools-cont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto; 
+        width: 4rem;
+        background-color: #c9e5dd;
+        justify-content: center;
+        position: absolute;
+        top: 5rem;
+        left: 7.8rem;
+        padding-top: 0.7rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        gap: 1rem; /* Add gap between items */
+    }   
+    .scale-tools{
+        animation-name: scale-tools;
+        animation-duration: 0.5s;
+    }
+    @keyframes scale-tools{
+       0%{
+        transform: scale(0.1);
+       }
+       100% {
+        transform: scale(1);
+       }
+    }
+    
+    .tools-cont > * {
+        display: block; /*you can assign display: flex; to the children of the .tools-cont container as well. Doing so will make each of those child elements a flex container themselves. This won't change their horizontal alignment within the .tools-cont container, but it will allow you to control the layout of their own children.*/
+        width: 2rem;
+    }
+    
+    .pencil-tool-cont {
+        height: 3rem;
+        width: 4rem;
+        position: absolute;
+        background-color:  #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:5rem;
+        left:11.8rem;
+        display: none;
+    
+    }
+    
+    .pencil-width-cont {
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    
+    }
+    .pencil-width-cont input{
+        width: 80%;
+    }
+    .pencil-color-cont {
+        background-color:  #c9e5dd;
+        height: calc(100% - 1.5rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .pencil-color {
+        height: 0.8rem;
+        width: 0.8rem;
+        border-radius: 50%;
+    }
+    
+    .eraser-tool-cont {
+        height: 2.5rem;
+        width: 4rem;
+        position: absolute;
+        background-color:   #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:9rem;
+        left:11.8rem;
+        display: none;
+    }
+    
+    .eraser-tool-cont input {
+        width: 80%;
+    }
+    
+    .sticky-cont{
+        height:8rem;
+        width: 7rem;
+        position: absolute; 
+        top:11.5rem;
+        left:0.3rem;
+       
+    }
+    
+    .header-cont{
+        height: 1.5rem; 
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color:  #c9e5dd;
+    }
+    .header-cont > * {
+        height: 1rem;
+        width: 1rem;
+        margin-right: 0.5rem;
+        border-radius: 50%;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 376px) 
+{
+    .options-cont {
+        height: 2rem;
+        width: 2rem;
+        background-color:#c9e5dd;
+        position: absolute;
+        top: 1.5rem;
+        left: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .fa-bars {
+        font-size: 1rem;
+    }
+
+    .fa-times {
+        font-size: 1rem;
+    }
+    .tools-cont {
+        display: flex; /*This makes the .tools-cont container a flex container. The direct child elements of .tools-cont will be arranged in a single line (horizontally, by default) unless otherwise specified.*/
+        height: 2.5rem;
+        width: 70%;
+        background-color: #c9e5dd;
+        justify-content: space-around;
+        position: absolute;
+        top: 2.5rem;
+        left: 18vw;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }   
+
+    .scale-tools{
+        animation-name: scale-tools;
+        animation-duration: 0.5s;
+    }
+    @keyframes scale-tools{
+       0%{
+        transform: scale(0.1);
+       }
+       100% {
+        transform: scale(1);
+       }
+    }
+    
+    .tools-cont > * {
+        display: block; /*you can assign display: flex; to the children of the .tools-cont container as well. Doing so will make each of those child elements a flex container themselves. This won't change their horizontal alignment within the .tools-cont container, but it will allow you to control the layout of their own children.*/
+        width: 2rem;
+    }
+    
+    .pencil-tool-cont {
+        height: 3rem;
+        width: 4rem;
+        position: absolute;
+        background-color:   #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:5rem;
+        left: 18vw;
+        display: none;
+    
+    }
+    
+    .pencil-width-cont {
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    
+    }
+    .pencil-width-cont input{
+        width: 80%;
+    }
+    .pencil-color-cont {
+        background-color:  #c9e5dd;
+        height: calc(100% - 1.5rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .pencil-color {
+        height: 0.8rem;
+        width: 0.8rem;
+        border-radius: 50%;
+    }
+    
+    .eraser-tool-cont {
+        height: 2.5rem;
+        width: 4rem;
+        position: absolute;
+        background-color: #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:5rem;
+        left:28vw;
+        display: none;
+    }
+    
+    .eraser-tool-cont input {
+        width: 80%;
+    }
+    
+    .sticky-cont{
+        height:8rem;
+        width: 7rem;
+        position: absolute; 
+        top:11.5rem;
+        left:0.3rem;
+       
+    }
+    
+    .header-cont{
+        height: 1.5rem; 
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color: #c9e5dd;
+    }
+    .header-cont > * {
+        height: 1rem;
+        width: 1rem;
+        margin-right: 0.5rem;
+        border-radius: 50%;
+    }
+}
+
+@media (min-width: 377px) and (max-width: 426px) 
+{
+    .options-cont {
+        height: 2rem;
+        width: 2rem;
+        background-color: #c9e5dd;
+        position: absolute;
+        top: 1.5rem;
+        left: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .fa-bars {
+        font-size: 1rem;
+    }
+
+    .fa-times {
+        font-size: 1rem;
+    }
+    
+    .tools-cont {
+        display: flex; /*This makes the .tools-cont container a flex container. The direct child elements of .tools-cont will be arranged in a single line (horizontally, by default) unless otherwise specified.*/
+        height: 2.5rem;
+        width: 70%;
+        background-color:#c9e5dd;;
+        justify-content: space-around;
+        position: absolute;
+        top: 2.5rem;
+        left: 18vw;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }   
+
+    .scale-tools{
+        animation-name: scale-tools;
+        animation-duration: 0.5s;
+    }
+    @keyframes scale-tools{
+       0%{
+        transform: scale(0.1);
+       }
+       100% {
+        transform: scale(1);
+       }
+    }
+    
+    .tools-cont > * {
+        display: block; /*you can assign display: flex; to the children of the .tools-cont container as well. Doing so will make each of those child elements a flex container themselves. This won't change their horizontal alignment within the .tools-cont container, but it will allow you to control the layout of their own children.*/
+        width: 2rem;
+    }
+    
+    .pencil-tool-cont {
+        height: 3rem;
+        width: 4rem;
+        position: absolute;
+        background-color:   #c9e5dd;;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:5rem;
+        left: 18vw;
+        display: none;
+    
+    }
+    
+    .pencil-width-cont {
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    
+    }
+    .pencil-width-cont input{
+        width: 80%;
+    }
+    .pencil-color-cont {
+        background-color:  #c9e5dd;;
+        height: calc(100% - 1.5rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .pencil-color {
+        height: 0.8rem;
+        width: 0.8rem;
+        border-radius: 50%;
+    }
+    
+    .eraser-tool-cont {
+        height: 2.5rem;
+        width: 4rem;
+        position: absolute;
+        background-color:  #c9e5dd;;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:5rem;
+        left:28vw;
+        display: none;
+    }
+    
+    .eraser-tool-cont input {
+        width: 80%;
+    }
+    
+    .sticky-cont{
+        height:8rem;
+        width: 7rem;
+        position: absolute; 
+        top:11.5rem;
+        left:0.3rem;
+       
+    }
+    
+    .header-cont{
+        height: 1.5rem; 
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color: #c9e5dd;;
+    }
+    .header-cont > * {
+        height: 1rem;
+        width: 1rem;
+        margin-right: 0.5rem;
+        border-radius: 50%;
+    }
+}
+
+@media (min-width: 427px) and (max-width: 520px) 
+{
+
+    .options-cont {
+        height: 1.5rem;
+        width: 1.5rem;
+        background-color: #c9e5dd;
+        position: absolute;
+        top: 2rem;
+        left: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .tools-cont {
+        display: flex; /*This makes the .tools-cont container a flex container. The direct child elements of .tools-cont will be arranged in a single line (horizontally, by default) unless otherwise specified.*/
+        height: 3rem;
+        width: 80%;
+        background-color:#c9e5dd;;
+        justify-content: space-around;
+        position: absolute;
+        top: 3.5rem;
+        left: 15vw;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }   
+
+    .fa-bars {
+        font-size: 1rem;
+    }
+
+    .fa-times {
+        font-size: 1rem;
+    }
+
+    .pencil-tool-cont {
+        height: 2.5rem;
+        width: 4rem;
+        position: absolute;
+        background-color: #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top: 6.5rem;
+        left: 15vw;
+        display: none;
+    
+    }
+    
+    .pencil-width-cont {
+        height: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    
+    }
+    .pencil-width-cont input{
+        width: 80%;
+    }
+    .pencil-color-cont {
+        background-color: hsl(163, 35%, 84%);
+        height: calc(100% - 1rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.2rem;
+    }
+    .pencil-color {
+        height: 0.8rem;
+        width: 0.8rem;
+        border-radius: 50%;
+    }
+    
+    .eraser-tool-cont {
+        height: 2rem;
+        width: 4rem;
+        position: absolute;
+        background-color: #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:6.5rem;
+        left:27vw;
+        display: none;
+    }
+    
+    .eraser-tool-cont input {
+        width: 80%;
+    }
+    
+    .sticky-cont{
+        height:9rem;
+        width: 8rem;
+        position: absolute; 
+        top:16rem;
+        left:4rem;
+       
+    }
+    
+    .header-cont{
+        height: 1.5rem; 
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color: #c9e5dd;
+    }
+    .header-cont > * {
+        height: 1rem;
+        width: 1rem;
+        margin-right: 0.5rem;
+        border-radius: 50%;
+    }
+}
+
+
+@media (min-width: 521px) and (max-width: 798px) 
+{
+
+    .options-cont {
+        height: 1.5rem;
+        width: 1.5rem;
+        background-color: #c9e5dd;
+        position: absolute;
+        top: 2rem;
+        left: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .tools-cont {
+        display: flex; /*This makes the .tools-cont container a flex container. The direct child elements of .tools-cont will be arranged in a single line (horizontally, by default) unless otherwise specified.*/
+        height: 3.5rem;
+        width: 80%;
+        background-color:#c9e5dd;;
+        justify-content: space-around;
+        position: absolute;
+        top: 3.5rem;
+        left: 13vw;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }   
+
+    .fa-bars {
+        font-size: 1rem;
+    }
+
+    .fa-times {
+        font-size: 1rem;
+    }
+
+    .pencil-tool-cont {
+        height: 3rem;
+        width: 4rem;
+        position: absolute;
+        background-color: #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top: 7rem;
+        left: 13vw;
+        display: none;
+    
+    }
+    
+    .pencil-width-cont {
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    
+    }
+    .pencil-width-cont input{
+        width: 80%;
+    }
+    .pencil-color-cont {
+        background-color: #c9e5dd;
+        height: calc(100% - 1.5rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .pencil-color {
+        height: 0.8rem;
+        width: 0.8rem;
+        border-radius: 50%;
+    }
+    
+    .eraser-tool-cont {
+        height: 2.5rem;
+        width: 4rem;
+        position: absolute;
+        background-color: #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:7rem;
+        left:25vw;
+        display: none;
+    }
+    
+    .eraser-tool-cont input {
+        width: 80%;
+    }
+    
+    .sticky-cont{
+        height:9rem;
+        width: 8rem;
+        position: absolute; 
+        top:16rem;
+        left:4rem;
+       
+    }
+    
+    .header-cont{
+        height: 1.5rem; 
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color: #c9e5dd;
+    }
+    .header-cont > * {
+        height: 1rem;
+        width: 1rem;
+        margin-right: 0.5rem;
+        border-radius: 50%;
+    }
+}
+
+
+@media (min-width: 799px) and (max-width: 1024px) 
+{
+
+    
+    .pencil-tool-cont {
+        height: 3rem;
+        width: 4rem;
+        position: absolute;
+        background-color: #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top: 7rem;
+        left: 16vw;
+        display: none;
+    
+    }
+    
+    .pencil-width-cont {
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    
+    }
+    .pencil-width-cont input{
+        width: 80%;
+    }
+    .pencil-color-cont {
+        background-color: #c9e5dd;
+        height: calc(100% - 1.5rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .pencil-color {
+        height: 0.8rem;
+        width: 0.8rem;
+        border-radius: 50%;
+    }
+    .eraser-tool-cont {
+        height: 2.5rem;
+        width: 4rem;
+        position: absolute;
+        background-color: #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:7rem;
+        left:27vw;
+        display: none;
+    }
+    
+    .eraser-tool-cont input {
+        width: 80%;
+    }
+    
+    .sticky-cont{
+        height:9rem;
+        width: 8rem;
+        position: absolute; 
+        top:16rem;
+        left:4rem;
+       
+    }
+    
+    .header-cont{
+        height: 1.5rem; 
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color: #c9e5dd;
+    }
+    .header-cont > * {
+        height: 1rem;
+        width: 1rem;
+        margin-right: 0.5rem;
+        border-radius: 50%;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) 
+{
+    
+    .pencil-tool-cont {
+        height: 3.5rem;
+        width: 6rem;
+        position: absolute;
+        background-color: #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top: 7rem;
+        left: 16vw;
+        display: none;
+    
+    }
+    
+    .pencil-width-cont {
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.2rem;
+    
+    }
+    .pencil-width-cont input{
+        padding-top: 3%;
+        width: 80%;
+    }
+    .pencil-color-cont {
+        background-color: #c9e5dd;
+        height: calc(100% - 1.5rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .pencil-color {
+        height: 1rem;
+        width: 1rem;
+        border-radius: 50%;
+    }
+    
+    .eraser-tool-cont {
+        height: 3rem;
+        width: 5rem;
+        position: absolute;
+        background-color:  #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top:7rem;
+        left:28vw;
+        display: none;
+    }
+    
+}
+
+@media (min-width: 1441px) and (max-width: 2560px) 
+{
+    
+    .pencil-tool-cont {
+        height: 4rem;
+        width: 8rem;
+        position: absolute;
+        background-color:  #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top: 7rem;
+        left: 18vw;
+        display: none;
+    
+    }
+    
+    .pencil-width-cont {
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    
+    }
+    .pencil-width-cont input{
+        width: 80%;
+    }
+    .pencil-color-cont {
+        background-color:  #c9e5dd;
+        height: calc(100% - 1.5rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+    .pencil-color {
+        height: 1rem;
+        width: 1rem;
+        border-radius: 50%;
+    }
+    
+    .eraser-tool-cont {
+        height: 3rem;
+        width: 8rem;
+        position: absolute;
+        background-color:   #c9e5dd;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        top: 7rem;
+        left: 28.5vw;
+        display: none;
+    }
+    
 }
