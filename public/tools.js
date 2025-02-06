@@ -49,7 +49,11 @@ pencil.addEventListener("click", (e) => {
    pencilFlag = !pencilFlag;
    if(pencilFlag)
    {
+      eraserFlag = false;
       pencilToolCont.style.display="block";
+      eraserToolCont.style.display = "none";
+      tool.lineWidth = penWid;
+      tool.strokeStyle = penCol;
    }
    else{
       pencilToolCont.style.display="none";
@@ -60,37 +64,54 @@ eraser.addEventListener("click", (e) => {
    eraserFlag = !eraserFlag;
    if(eraserFlag)
    {
+      tool.lineWidth = eraserWid;
+      tool.strokeStyle = eraserCol;
+      pencilToolCont.style.display = "none";
       eraserToolCont.style.display="flex";
    }
    else{
       eraserToolCont.style.display="none";
+      tool.strokeStyle = penCol;
+      tool.lineWidth = penWid;
    }
 })
 
 upload.addEventListener("click",(e) => {
-   let input =document.createElement("input");
+   let input=document.createElement("input");
    input.setAttribute("type","file");
    input.click();
-
-   input.addEventListener("change",(e)=>{
-      let file= input.files[0];
+   input.addEventListener("change",(e)=>{ /* The change event is specifically designed to detect when the value of an input element changes, such as when a user selects a file using an <input type="file"> element. */
+      let file= input.files[0]; /*first file*/
       let url = URL.createObjectURL(file);
-      let stickyTemplateHTML = '<div class="header-cont"><div class="minimize"></div>    <div class="remove"></div> </div><div class="note-cont"><img src="$(url)"/></div>';
+      let stickyTemplateHTML = 
+      `<div class="header-cont">
+         <div class="minimize"></div>  
+         <div class="remove"></div> 
+       </div>
+       <div class="note-cont">
+         <img src="${url}"/>
+      </div>`;
       createSticky(stickyTemplateHTML);
    })
   
 })
 
 
-
 sticky.addEventListener("click", (e)=> {
-   let stickyTemplateHTML ='<div class="header-cont"><div class="minimize"></div>    <div class="remove"></div> </div><div class="note-cont"><textarea spellcheck = "false"></textarea></div>';
-   createSticky(stickyTemplateHTML);
-   
+   let stickyTemplateHTML = `
+        <div class="header-cont">
+            <div class="minimize"></div>
+            <div class="remove"></div>
+        </div>
+        <div class="note-cont">
+            <textarea spellcheck="false"></textarea>
+        </div>`;
+    createSticky(stickyTemplateHTML);
 }) 
+
 function createSticky(stickyTemplateHTML)
 {
-   let stickyCont =document.createElement("div");
+      let stickyCont=document.createElement("div");
       stickyCont.setAttribute("class","sticky-cont");
       stickyCont.innerHTML =stickyTemplateHTML;
       document.body.appendChild(stickyCont);
@@ -100,7 +121,6 @@ function createSticky(stickyTemplateHTML)
       stickyCont.onmousedown = function(event) {
        dragAndDrop(stickyCont, event);
       };
-         
       stickyCont.ondragstart = function() {
          return false;
        };
@@ -122,17 +142,7 @@ function noteActions(minimize, remove, stickyCont)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+//to drag and drop sticky container
 function dragAndDrop(element,event){
    let shiftX = event.clientX - element.getBoundingClientRect().left;
    let shiftY = event.clientY - element.getBoundingClientRect().top;
